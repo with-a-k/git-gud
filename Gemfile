@@ -35,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
 gem 'omniauth-github'
 gem 'foundation-rails'
+gem 'rails_12factor'
+gem 'hurley'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
