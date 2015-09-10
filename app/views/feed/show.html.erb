@@ -21,7 +21,6 @@
 		<ul class="repos">
 			<% current_user.repositories.each do |repository| %>
 				<li>
-					<%= byebug %>
 					<h5><%= repository["name"] %></h5>
 				</li>
 			<% end %>
