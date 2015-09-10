@@ -18,19 +18,19 @@ feature "FeedBasics" do
     end
   end
 
-  scenario "activity" do
-    VCR.use_cassette 'feed#activity' do
-      visit root_path
-      click_on "Log In"
-      # expect to see activity
-    end
-  end
+  # scenario "activity" do
+  #   VCR.use_cassette 'feed#activity' do
+  #     visit root_path
+  #     click_on "Log In"
+  #     # expect to see activity
+  #   end
+  # end
 
-  scenario "locked out to unauthenticated users" do
-    VCR.use_cassette 'feed#security' do
-      visit feed_path
-      # force the authentication to fail?
-      # expect to be at a Forbidden or Not Found pagevisit
-    end
-  end
+  # scenario "locked out to unauthenticated users" do
+  #   VCR.use_cassette 'feed#security' do
+  #     visit feed_path
+  #     # force the authentication to fail?
+  #     # expect to be at a Forbidden or Not Found pagevisit
+  #   end
+  # end
 end

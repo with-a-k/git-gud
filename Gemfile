@@ -57,5 +57,6 @@ group :test do
   gem 'webmock'
   gem 'selenium-webdriver'
   gem 'launchy'
+  gem 'simplecov'
 end
 
