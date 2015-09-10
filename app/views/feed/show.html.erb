@@ -19,15 +19,12 @@
 	<div class="large-4 end columns">
 		<h3>Your Repositories</h3>
 		<ul class="repos">
-			<li>
-				<h5>a-rude-sandstorm</h5>
-			</li>
-			<li>
-				<h5>linarite</h5>
-			</li>
-			<li>
-				<h5>blocketry</h5>
-			</li>
+			<% current_user.repositories.each do |repository| %>
+				<li>
+					<%= byebug %>
+					<h5><%= repository["name"] %></h5>
+				</li>
+			<% end %>
 		</ul>
 	</div>
 </div>

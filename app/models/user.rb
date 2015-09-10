@@ -31,4 +31,8 @@ class User < ActiveRecord::Base
   def number_starred
     service.get_number_starred(self)
   end
+
+  def repositories
+    service.user_repositories(self)
+  end
 end

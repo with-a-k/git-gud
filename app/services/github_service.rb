@@ -26,6 +26,10 @@ class GithubService
     parse(connection.get("/user?access_token=#{user.token}"))
   end
 
+  def user_repositories(user)
+    parse(connection.get("/users/#{user.nickname}/repos?access_token=#{user.token}"))
+  end
+
   private
 
   def parse(response)
