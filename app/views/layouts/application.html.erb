@@ -20,13 +20,15 @@
         </li>
       </ul>
       <section class="top-bar-section">
+        <% if current_user %>
         <ul class="right">
-          <li class="active"><a href="#">Log Out</a></li>
+          <li class="active"><a href="/logout">Log Out</a></li>
         </ul>
         <ul class="left">
           <li><a href="#"><%= image_tag("#{current_user.image_url}", height: '32', width: '32', class: "round-image") %></a></li>
-          <%= user_information %>
+          <li><a><%= current_user.followers %> followers. You are following <%= current_user.following %></a></li>
         </ul>
+        <% end %>
       </section>
     </nav>
     <div class="row">

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  def self.service
-    @service = GithubService.new
+  def service
+    GithubService.new
   end
 
   def self.find_or_create_from_oauth(data)
@@ -10,16 +10,25 @@ class User < ActiveRecord::Base
     user.nickname   = data.info.nickname
     user.image_url  = data.info.image
     user.token      = data.credentials.token
+
     user.save
 
     user
   end
 
   def following
-    service.following
+    service.count_following(self)
   end
 
   def followers
-    service.followers
+    service.count_followers(self)
+  end
+
+  def organizations
+    service.get_organizations(self)
+  end
+
+  def number_starred
+    service.get_number_starred(self)
   end
 end

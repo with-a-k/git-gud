@@ -8,12 +8,12 @@ class SessionsController < ApplicationController
       redirect_to feed_path
     else
       flash[:critical] = "Action failed!"
-      redirect_to landing_path
+      redirect_to root_path
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to landing_path
+    redirect_to root_path
   end
 end
