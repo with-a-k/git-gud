@@ -2,18 +2,19 @@
 	<div class="large-6 large-offset-1 columns">
 		<h3>Activity</h3>
 		<ul class="activity">
-			<li>
-				<h5>Your Collaborator closed issue "Coverage scare"</h5>
-				<p>At least 90% coverage is required as determined...</p>
-			</li>
-			<li>
-				<h5>You closed issue "Detangle routes"</h5>
-				<p>Guys, the same thing shouldn't appear more than once...</p>
-			</li>
-			<li>
-				<h5>You created the repository "blocketry"</h5>
-				<p>Can't I have some fun sometimes?</p>
-			</li>
+			<% current_user.events.each do |event| %>
+				<% if event.type == "PullRequestEvent" %>
+					<p><span class="proper-name-in-event"><%= event.actor_name %></span> <%= event.action %> pull request <%= event.number %> in <span class="proper-name-in-event"><%= event.repo_name %></span></p>
+				<% elsif event.type == "IssuesEvent" %>
+					<p><span class="proper-name-in-event"><%= event.actor_name %></span> <%= event.action %> issue <%= event.issue_number %> in <span class="proper-name-in-event"><%= event.repo_name %></span></p>
+				<% elsif event.type == "PushEvent" %>
+					<p><span class="proper-name-in-event"><%= event.actor_name %></span> pushed <%= event.size %> commits to <%= event.push_ref %> in <span class="proper-name-in-event"><%= event.repo_name %></span></p>
+				<% elsif event.type == "CreateEvent" %>
+					<p><span class="proper-name-in-event"><%= event.actor_name %></span> created <%= event.ref_type %> <%= event.ref %> in <span class="proper-name-in-event"><%= event.repo_name %></span></p>
+				<% elsif event.type == "DeleteEvent" %>
+					<p><span class="proper-name-in-event"><%= event.actor_name %></span> deleted <%= event.ref_type %> <%= event.ref %> in <span class="proper-name-in-event"><%= event.repo_name %></span></p>
+				<% end %>
+			<% end %>
 		</ul>
 	</div>
 	<div class="large-4 end columns">

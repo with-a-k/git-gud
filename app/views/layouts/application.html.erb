@@ -25,8 +25,9 @@
           <li class="active"><a href="/logout">Log Out</a></li>
         </ul>
         <ul class="left">
-          <li><a href="#"><%= image_tag("#{current_user.image_url}", height: '32', width: '32', class: "round-image") %></a></li>
+          <li><a><%= image_tag("#{current_user.image_url}", height: '32', width: '32', class: "round-image") %><a></li>
           <li><a><%= current_user.followers %> followers. You are following <%= current_user.following %></a></li>
+          <li><a><%= current_user.number_starred %> starred repositories.</a></li>
         </ul>
         <% end %>
       </section>

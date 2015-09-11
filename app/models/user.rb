@@ -35,4 +35,8 @@ class User < ActiveRecord::Base
   def repositories
     service.user_repositories(self)
   end
+
+  def events
+    service.get_events(self).map { |event| Event.new(event) }
+  end
 end
