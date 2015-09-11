@@ -16,14 +16,14 @@ class ActiveSupport::TestCase
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
     :provider => 'github',
-    :uid => '123545',
+    :uid => '6319591',
     :info => {
       :email => 'with_a_k@mac.com',
       :nickname => 'with-a-k',
       :image_url => 'https://scontent.cdninstagram.com/hphotos-xaf1/l/t51.2885-15/s150x150/e15/11910403_484109791762117_452611898_n.jpg'
     },
     :credentials => {
-      :token => 'an-obviously-fake-token'
+      :token => '1a734c08abbc3242557dd247238d8ef07011cdbd'
     }
   })
 
