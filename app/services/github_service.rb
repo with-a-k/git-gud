@@ -13,13 +13,20 @@ class GithubService
     user_data(user)["followers"]
   end
 
-  def get_organizations(user)
-    byebug
-    parse(connection.get("/users/#{user.nickname}/orgs?access_token=#{user.token}"))
+  def following(user)
+    parse(connection.get("/user/following?access_token=#{user.token}"))
+  end
+
+  def followers(user)
+    parse(connection.get("/user/followers?access_token=#{user.token}"))
   end
 
   def get_number_starred(user)
     parse(connection.get("/user/starred?access_token=#{user.token}")).count
+  end
+
+  def get_starred(user)
+    parse(connection.get("/user/starred?access_token=#{user.token}"))
   end
 
   def user_data(user)
@@ -32,6 +39,10 @@ class GithubService
 
   def get_events(user)
     parse(connection.get("/users/#{user.nickname}/received_events?access_token=#{user.token}"))
+  end
+
+  def get_your_events(user)
+    parse(connection.get("/users/#{user.nickname}/events?access_token=#{user.token}"))
   end
 
   private

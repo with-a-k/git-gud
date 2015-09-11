@@ -20,12 +20,24 @@ class User < ActiveRecord::Base
     service.count_following(self)
   end
 
+  def users_following
+    service.following(self)
+  end
+
   def followers
     service.count_followers(self)
   end
 
+  def user_followers
+    service.followers(self)
+  end
+
   def organizations
     service.get_organizations(self)
+  end
+
+  def starred
+    service.get_starred(self)
   end
 
   def number_starred
@@ -38,5 +50,29 @@ class User < ActiveRecord::Base
 
   def events
     service.get_events(self).map { |event| Event.new(event) }
+  end
+
+  def owned_events
+    service.get_your_events(self).map { |event| Event.new(event) }
+  end
+
+  def stats
+    GithubStats.new(self.nickname) 
+  end
+
+  def year_contributions
+    stats.data.scores.reduce(&:+)
+  end
+
+  def day_contributions
+    stats.data.scores.last
+  end
+
+  def longest_streak
+    stats.longest_streak.count
+  end
+
+  def current_streak
+    stats.streak.count
   end
 end

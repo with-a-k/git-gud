@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="large-6 large-offset-1 columns">
-		<h3>Activity You Follow</h3>
+		<h3>Your Activity</h3>
 		<ul class="activity">
-			<% current_user.events.each do |event| %>
+			<% current_user.owned_events.each do |event| %>
 				<% if event.type == "PullRequestEvent" %>
 					<p><span class="proper-name-in-event"><%= event.actor_name %></span> <%= event.action %> pull request <%= event.number %> in <span class="proper-name-in-event"><%= event.repo_name %></span></p>
 				<% elsif event.type == "IssuesEvent" %>
@@ -18,13 +18,40 @@
 		</ul>
 	</div>
 	<div class="large-4 end columns">
-		<h3>Your Repositories</h3>
+		<h3>Starred Repositories</h3>
 		<ul class="repos">
-			<% current_user.repositories.each do |repository| %>
+			<% current_user.starred.each do |repository| %>
 				<li>
-					<h5><%= repository["name"] %></h5>
+					<h5><%= repository["full_name"] %></h5>
 				</li>
 			<% end %>
+		</ul>
+		<hr>
+		<h3>You Follow:</h3>
+		<ul class="following">
+			<% current_user.users_following.each do |user| %>
+				<li>
+					<h5><%= user["login"] %></h5>
+				</li>
+			<% end %>
+		</ul>
+		<hr>
+		<h3>These Users:</h3>
+		<ul class="followers">
+			<% current_user.user_followers.each do |user| %>
+				<li>
+					<h5><%= user["login"] %></h5>
+				</li>
+			<% end %>
+		</ul>
+		<h3>Follow You</h3>
+		<hr>
+		<h3>Contributions</h3>
+		<ul class="contributions">
+			<li id="today">Today: <%= current_user.day_contributions %></li>
+			<li id="streak">Streak: <%= pluralize(current_user.current_streak, 'day') %></li>
+			<li id="record">Record Streak: <%= pluralize(current_user.longest_streak, 'day') %></li>
+			<li id="this-year">This Year: <%= current_user.year_contributions %></li>
 		</ul>
 	</div>
 </div>

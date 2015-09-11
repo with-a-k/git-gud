@@ -38,6 +38,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     arel (6.0.3)
+    basiccache (1.0.0)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -64,6 +65,7 @@ GEM
     coffee-script-source (1.9.1.1)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
+    curb (0.8.8)
     debug_inspector (0.0.2)
     docile (1.1.5)
     erubis (2.7.0)
@@ -76,6 +78,10 @@ GEM
     foundation-rails (5.5.2.1)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
+    githubstats (1.1.0)
+      basiccache (~> 1.0.0)
+      curb (~> 0.8.6)
+      nokogiri (~> 1.6.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.4.2)
@@ -229,6 +235,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   figaro
   foundation-rails
+  githubstats
   hurley
   jbuilder (~> 2.0)
   jquery-rails
